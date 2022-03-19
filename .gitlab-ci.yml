@@ -1,0 +1,125 @@
+# SPDX-License-Identifier: Apache-2.0
+#
+# Copyright 2020-2021 Huawei Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+stages:
+  - compliance
+  - test50MB
+  - test100MB
+  - test200MB
+  - test500MB
+  - test1GB
+  - test3GB
+  - test5GB
+
+include:
+ - local: '/.oniro-ci/dco.yaml'
+ - template: 'Workflows/MergeRequest-Pipelines.gitlab-ci.yml'
+
+dco:
+  extends: .dco
+  tags: [wrc]
+  script:
+    - mkdir -p "$CI_PROJECT_DIR"/artifacts
+    - cp "$CI_PROJECT_DIR"/hardware/*.pdf "$CI_PROJECT_DIR"/artifacts/
+    - du -sh "$CI_PROJECT_DIR"/artifacts/
+  artifacts:
+    paths:
+      - artifacts/
+    
+test-100MB:
+  stage: test100MB
+  tags: [wrc]
+  script:
+    - mkdir -p "$CI_PROJECT_DIR"/artifacts
+    - dd if=/dev/zero of="$CI_PROJECT_DIR"/artifacts/test_file bs=1024 count=100000
+    - du -sh "$CI_PROJECT_DIR"/artifacts/
+  artifacts:
+    expire_in: 10m
+    paths:
+      - artifacts/
+
+test-50MB:
+  stage: test50MB
+  tags: [wrc]
+  script:
+    - mkdir -p "$CI_PROJECT_DIR"/artifacts
+    - dd if=/dev/zero of="$CI_PROJECT_DIR"/artifacts/test_file bs=1024 count=50000
+    - du -sh "$CI_PROJECT_DIR"/artifacts/
+  artifacts:
+    expire_in: 10m
+    paths:
+      - artifacts/
+  
+test-200MB:
+  stage: test200MB
+  tags: [wrc]
+  script:
+    - mkdir -p "$CI_PROJECT_DIR"/artifacts
+    - dd if=/dev/zero of="$CI_PROJECT_DIR"/artifacts/test_file bs=1024 count=200000
+    - du -sh "$CI_PROJECT_DIR"/artifacts/
+  artifacts:
+    expire_in: 10m
+    paths:
+      - artifacts/
+  
+test-500MB:
+  stage: test500MB
+  tags: [wrc]
+  script:
+    - mkdir -p "$CI_PROJECT_DIR"/artifacts
+    - dd if=/dev/zero of="$CI_PROJECT_DIR"/artifacts/test_file bs=1024 count=500000
+    - du -sh "$CI_PROJECT_DIR"/artifacts/
+  artifacts:
+    expire_in: 10m
+    paths:
+      - artifacts/
+  
+test-1GB:
+  stage: test1GB
+  tags: [wrc]
+  script:
+    - mkdir -p "$CI_PROJECT_DIR"/artifacts
+    - dd if=/dev/zero of="$CI_PROJECT_DIR"/artifacts/test_file bs=1024 count=1000000
+    - du -sh "$CI_PROJECT_DIR"/artifacts/
+  artifacts:
+    expire_in: 10m
+    paths:
+      - artifacts/
+  
+test-3GB:
+  stage: test3GB
+  tags: [wrc]
+  script:
+    - mkdir -p "$CI_PROJECT_DIR"/artifacts
+    - dd if=/dev/zero of="$CI_PROJECT_DIR"/artifacts/test_file bs=1024 count=3000000
+    - du -sh "$CI_PROJECT_DIR"/artifacts/
+  artifacts:
+    expire_in: 10m
+    paths:
+      - artifacts/
+  
+test-5GB:
+  stage: test5GB
+  tags: [wrc]
+  script:
+    - mkdir -p "$CI_PROJECT_DIR"/artifacts
+    - dd if=/dev/zero of="$CI_PROJECT_DIR"/artifacts/test_file bs=1024 count=5000000
+    - du -sh "$CI_PROJECT_DIR"/artifacts/
+  artifacts:
+    expire_in: 10m
+    paths:
+      - artifacts/
+  

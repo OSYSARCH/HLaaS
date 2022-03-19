@@ -1,0 +1,119 @@
+# SPDX-License-Identifier: Apache-2.0
+# SPDX-FileCopyrightText: Huawei Inc.
+
+# Please do not include this file directly. It should be included through the
+# build-generic.yaml only.
+
+# The following jobs are documented in docs/ci/machines-and-flavours.rst
+
+linux-qemu-x86:
+  extends: .build-wic-image
+  variables:
+    MACHINE: qemux86
+    CI_ONIRO_BUILD_FLAVOUR: linux
+    CI_ONIRO_RECIPE_NAME: oniro-image-base-tests
+    # Set CI_ONIRO_BUILD_CACHE to "pub", overriding the value defined in the
+    # .build job. This enables sharing of download and sstate-cache created
+    # during this job.
+    #
+    # This is done assuming that there are no non-redistributable or otherwise
+    # tainted build intermediate files, downloads or published artifacts.
+    CI_ONIRO_BB_LOCAL_CONF_BB_GENERATE_MIRROR_TARBALLS: 1
+
+linux-qemu-x86_64:
+  extends: .build-wic-image
+  variables:
+    MACHINE: qemux86-64
+    CI_ONIRO_BUILD_FLAVOUR: linux
+    CI_ONIRO_RECIPE_NAME: oniro-image-base-tests
+    # See the note on linux-qemu-x86.
+    CI_ONIRO_BUILD_CACHE: "pub"
+    CI_ONIRO_BB_LOCAL_CONF_BB_GENERATE_MIRROR_TARBALLS: 1
+
+linux-seco-intel-b68:
+  extends: .build-linux-matrix
+  variables:
+    MACHINE: seco-intel-b68
+
+linux-seco-imx8mm-c61:
+  extends: .build-linux-matrix
+  variables:
+    MACHINE: seco-imx8mm-c61
+    # This platform requires proprietary resources to boot.
+    # See build-generic.yaml for explanation of CI_ONIRO_BB_LOCAL_CONF_ variables.
+    CI_ONIRO_BB_LOCAL_CONF_ACCEPT_FSL_EULA: 1
+
+linux-stm32mp1-av96:
+  extends: .build-recipe
+  variables:
+    CI_ONIRO_BUILD_FLAVOUR: linux
+    CI_ONIRO_RECIPE_NAME: oniro-image-base-tests
+    MACHINE: stm32mp1-av96
+
+linux-raspberrypi4-64:
+  extends: .build-wic-image
+  variables:
+    MACHINE: raspberrypi4-64
+    CI_ONIRO_BUILD_FLAVOUR: linux
+    CI_ONIRO_RECIPE_NAME: oniro-image-base-tests
+
+zephyr-qemu-x86:
+  extends: .build-image
+  variables:
+    MACHINE: qemu-x86
+    # See the note on linux-qemu-x86.
+    CI_ONIRO_BUILD_CACHE: "pub"
+    CI_ONIRO_BB_LOCAL_CONF_BB_GENERATE_MIRROR_TARBALLS: 1
+    CI_ONIRO_RECIPE_NAME: zephyr-philosophers
+    CI_ONIRO_BUILD_FLAVOUR: zephyr
+    CI_ONIRO_INSTANCE_SIZE: s3.large.2
+
+zephyr-qemu-cortex-m3:
+  extends: .build-image
+  variables:
+    MACHINE: qemu-cortex-m3
+    # See the note on linux-qemu-x86.
+    CI_ONIRO_BUILD_CACHE: "pub"
+    CI_ONIRO_BB_LOCAL_CONF_BB_GENERATE_MIRROR_TARBALLS: 1
+    CI_ONIRO_RECIPE_NAME: zephyr-philosophers
+    CI_ONIRO_BUILD_FLAVOUR: zephyr
+    CI_ONIRO_INSTANCE_SIZE: s3.large.2
+
+zephyr-96b-nitrogen:
+  extends: .build-image
+  variables:
+    MACHINE: 96b-nitrogen
+    CI_ONIRO_RECIPE_NAME: zephyr-philosophers
+    CI_ONIRO_BUILD_FLAVOUR: zephyr
+    CI_ONIRO_INSTANCE_SIZE: s3.large.2
+
+zephyr-96b-nitrogen-tests:
+  extends: .build-image
+  variables:
+    MACHINE: 96b-nitrogen
+    CI_ONIRO_RECIPE_NAME: zephyr-kernel-test-all
+    CI_ONIRO_BUILD_FLAVOUR: zephyr
+    CI_ONIRO_INSTANCE_SIZE: s3.large.2
+
+zephyr-96b-avenger:
+  extends: .build-zephyr
+  variables:
+    MACHINE: 96b-avenger96
+
+zephyr-nrf52840dk-nrf52840:
+  extends: .build-zephyr
+  variables:
+    MACHINE: nrf52840dk-nrf52840
+
+zephyr-arduino-nano-33-ble:
+  extends: .build-zephyr
+  variables:
+    MACHINE: arduino-nano-33-ble
+
+freertos-armv5:
+  extends: .build-freertos
+  variables:
+    MACHINE: qemuarmv5
+    # See the note on linux-qemu-x86.
+    CI_ONIRO_BUILD_CACHE: "pub"
+    CI_ONIRO_BB_LOCAL_CONF_BB_GENERATE_MIRROR_TARBALLS: 1
