@@ -17,6 +17,7 @@ More information can be found at: https://docs.oniroproject.org/en/latest/
 * Lava
 * Hardware level
 
+## Hardware inventory
 
 ## WRC Lab shelves
 
