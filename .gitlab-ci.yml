@@ -16,6 +16,7 @@
 
 stages:
   - compliance
+  - test
 
 include:
   - local: '/.oniro-ci/dco.yaml'
@@ -24,3 +25,10 @@ include:
 dco:
   extends: .dco
   tags: [wrc]
+
+# check if corresponding stl and png files exist
+check-stl:
+  stage: test
+  script:
+    - ls 3D_shelves/*.FCStd | while read f ; do ls  ${f%%.FCStd}*.stl; done
+    - ls 3D_shelves/*.FCStd | while read f ; do ls  ${f%%.FCStd}*.png; done
