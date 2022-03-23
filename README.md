@@ -10,19 +10,18 @@ This is Lab as a Service space for building Oniroproject related lab. The lab co
 
 More information can be found at: https://docs.oniroproject.org/en/latest/
 
-
 * Oniroproject
 * Oniroproject blueprints
 * Infrastructure as Code (IaC) for installation of software
 * Lava
 * Hardware level
 
-
 ## WRC Lab shelves
 
 Directory 3D_shelves contain rack shelves with trays for different devices under test (DUT)
 
 Calculation of shelves needed:
+
 
 1. 6x RPi4 + disks = 2 shelves
 1. ykush switches x2, SBC C61 = 1 shelf
