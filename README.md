@@ -22,7 +22,6 @@ Directory 3D_shelves contain rack shelves with trays for different devices under
 
 Calculation of shelves needed:
 
-
 1. 6x RPi4 + disks = 2 shelves
 1. ykush switches x2, SBC C61 = 1 shelf
 1. SBC B68, 2x relays, 2x nitrogens, 2x arduinos = 2+2+2+2 = 8 = 1.5 shelves
@@ -42,3 +41,4 @@ The license of this repository is as follows:
 * Scripts, tools, and so on, are under `Apache-2.0` license
 
 See the `LICENSES` subdirectory for full license texts.
+
