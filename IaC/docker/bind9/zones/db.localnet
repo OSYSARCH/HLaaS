@@ -1,0 +1,17 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+localnet			IN SOA	localnet. root.localnet. (
+				1        ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				86400      ; minimum (1 day)
+				)
+			NS	dell.localnet.
+$ORIGIN localnet.
+$TTL 300	; 5 minutes
+dell			A	10.10.10.250
+
+pdu-01	A	10.10.10.51
+pdu-02	A	10.10.10.251
+kisscache A	10.10.10.250

@@ -24,7 +24,7 @@ include:
 
 dco:
   extends: .dco
-  tags: [wrc]
+  tags: [wrc,compliance]
 
 # check if corresponding stl and png files exist
 check-stl:

@@ -4,29 +4,39 @@ SPDX-FileCopyrightText: Huawei Inc.
 SPDX-License-Identifier: CC-BY-4.0
 -->
 
-# Lab as a Service space
-
-This is Lab as a Service space for building Oniroproject related lab. The lab consists of several areas:
+# Hardware Lab as a Service Blueprint space
 
 More information can be found at: https://docs.oniroproject.org/en/latest/
 
-* Oniroproject
-* Oniroproject blueprints
-* Infrastructure as Code (IaC) for installation of software
-* Lava
-* Hardware level
+This is Hardware Lab as a Service Blueprint space for building Oniroproject related laboratory. The lab consists of several areas:
 
-## WRC Lab shelves
+* Devices Under Tests (DUTs)
+* DUTs setups along with alternative setups
+* Rack space organisation
+* Connection diagrams
 
-Directory 3D_shelves contain rack shelves with trays for different devices under test (DUT)
+## Hardware inventory
+Information about used hardware can be found in [hardware directory](https://gitlab.eclipse.org/eclipse/oniro-core/HLaaS/-/tree/main/hardware)
 
-Calculation of shelves needed:
+## Rack space organisation
+Directory [3D_shelves](https://gitlab.eclipse.org/eclipse/oniro-core/HLaaS/-/tree/main/3D_shelves) contain rack shelves and trays 3D designs for used devices under test (DUT)
 
-1. 6x RPi4 + disks = 2 shelves
-1. ykush switches x2, SBC C61 = 1 shelf
-1. SBC B68, 2x relays, 2x nitrogens, 2x arduinos = 2+2+2+2 = 8 = 1.5 shelves
+The directory should be useful for clean organisation of space in rack cabinet.
 
-Total ~ 5 shelves
+## Connections diagrams
+[tbd]
+
+## Integration with external services
+### Internal infrastructure services
+A minimal set of infrastructure services is needed for environment to function. Those are:
+* [DHCP server](https://gitlab.eclipse.org/eclipse/oniro-core/HLaaS/-/tree/main/IaC/docker/isc-dhcp-server)
+* [DNS server](https://gitlab.eclipse.org/eclipse/oniro-core/HLaaS/-/tree/main/IaC/docker/bind9)
+* [NTP server](https://gitlab.eclipse.org/eclipse/oniro-core/HLaaS/-/tree/main/IaC/docker/chrony)
+* [KISS cache]((https://gitlab.eclipse.org/eclipse/oniro-core/HLaaS/-/tree/main/IaC/docker/KissCache)
+* [traefik load balancer](https://gitlab.eclipse.org/eclipse/oniro-core/HLaaS/-/tree/main/IaC/traefik)
+* [gitlab-runner environment]((https://gitlab.eclipse.org/eclipse/oniro-core/HLaaS/-/tree/main/IaC/gitlab-runner)
+Directory [IaC](https://gitlab.eclipse.org/eclipse/oniro-core/HLaaS/-/tree/main/IaC) is where code for setting up the services is located.
+=======
 
 ## Contributing
 

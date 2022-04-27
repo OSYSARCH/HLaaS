@@ -1,0 +1,2 @@
+docker run -d -v /var/lib/dhcp:/var/lib/dhcp -v /opt/docker/isc-dhcp-server/dhcpd.conf:/etc/dhcp/dhcpd.conf --net=host --name=dhcpd --restart=always sirferdek/isc-dhcp-server eno1
+
