@@ -9,9 +9,8 @@ The aim of the project is to help Contributors get up to speed with setup simila
 The set of hardware is based on what has been tested and interfaced with WRC services. Any hardware with similar functionality can be used but we've found that it takes time and seasoning and refinement to make setups stable.
 
 # Hardware inventory
-Hardware inventory is evolutionary process.
 
-We're adding new DUTs and new set of accessories, as Oniroproject is evolving.
+We're adding new DUTs and new set of accessories, according to Oniroproject blueprints inventory.
 
 Devices come in different sizes; different set of connectors; power supplies requirements, network interfaces, etc.
 Unification of environment where they can be put becomes evident with the number of growing amount of DUTs, cabling mesh and collection of power supplies and accessiories.
