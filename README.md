@@ -6,24 +6,36 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Hardware Lab as a Service Blueprint space
 
+## Terminology
+* DUT - Device Under Test
+
+## Overview
+
 More information can be found at: https://docs.oniroproject.org/en/latest/
 
-This is Hardware Lab as a Service Blueprint space for building Oniroproject laboratory. The lab consists of several areas:
+This is **Hardware Lab as a Service Blueprint** space for building Oniroproject laboratory. The lab consists of several areas:
 
 * Devices Under Tests (DUTs)
-* DUTs setups along with alternative setups
 * Rack space organisation
-* Connection diagrams
+* DUTs setups along with alternative setups
+* Wiring and connections diagrams
+* Accompanying infrastructure services inside lab
+* Integration with gitlab and CI/CD pipelines
+* [Monitoring](Monitoring) of state of the lab
 
 ## Hardware inventory
 Information about used hardware can be found in [hardware directory](hardware)
 
 ## Rack space organisation
-Directory [3D_shelves](3D_shelves) contain rack shelves and trays 3D designs for used devices under test (DUT)
+### NetBox
+Rack space hardware placement and cabling with many DUTs and accomopanying hardware can be a challange. If you plan to have many DUTs and rack cabinet full of hardware and plan expanding, it's a good moment to keep track of assets. [NetBox open source application](https://docs.netbox.dev/) with [docker installation](https://hub.docker.com/r/netboxcommunity/netbox/) can [help](IaC/docker/netbox-docker).
 
-The directory should be useful for clean organisation of space in rack cabinet.
+Alternative to NetBox is [Nautobot](https://www.networktocode.com/nautobot/) but we haven't been using it.
 
-## Connections diagrams
+### Shelves and trays
+Directory [3D_shelves](3D_shelves) contains rack shelves and trays 3D designs for DUTs and additional controlling hardware
+
+### Connections diagrams
 [tbd]
 
 ## Integration with external services
@@ -33,6 +45,7 @@ A minimal set of infrastructure services is needed for environment to function. 
 * [DNS server](IaC/docker/bind9)
 * [NTP server](IaC/docker/chrony)
 * [KISS cache](IaC/docker/KissCache)
+* [Netbox IPAM](IaX/docker/netbox-docker)
 * [traefik load balancer](IaC/traefik)
 * [gitlab-runner environment]((IaC/gitlab-runner)
 Directory [IaC](IaC) is where code for setting up the services is located.
@@ -51,4 +64,5 @@ The license of this repository is as follows:
 * Scripts, tools, and so on, are under `Apache-2.0` license
 
 See the `LICENSES` subdirectory for full license texts.
+
 

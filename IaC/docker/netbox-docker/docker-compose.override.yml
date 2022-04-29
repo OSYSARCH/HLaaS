@@ -1,0 +1,11 @@
+version: '3.4'
+services:
+  netbox:
+    ports:
+      - 8080
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.netbox.rule=Host(`netbox.<your-domain>.dev`)
+      - traefik.http.routers.netbox.tls=true
+      - traefik.http.routers.netbox.entrypoints=websecure
+
