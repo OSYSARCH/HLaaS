@@ -24,40 +24,36 @@ actor Developer
 Developer->gitlab
 gitlab-->lava
 
-cloud localnet {
-card storage [
-USB drive with system
-       or
-      microSD
+cloud localnet as "lab network" {
+database storage [
+      USB SSD
 ] 
-
 
 node pi4 as "Raspberry Pi 4B" {
   component lavaworker {
   }
 }
 
+
 node uart
 node USB_uart
-node relay1 [
-relay HAT
-]
-
 node arduino [
 Arduino nano 33 BLE
+]
+node relay1 [
+relay HAT
 ]
 }
 
 storage<->pi4 : USB 3
-pi4-->relay1 : GPIO
+lava-->lavaworker
+lavaworker-->relay1 : GPIO
 pi4-->USB_uart : USB
 pi4<-->uart : USB
-
-lava-->lavaworker
+uart->arduino : console
 relay1->arduino : reset
+uart->arduino : console
 USB_uart->arduino
-
-arduino->uart : console
 ```
 
 Arduino nano 33 BLE is controlled by Lava worker installed on Raspberry Pi 4B. There's no requirements for it to be RPi4B but standardisation o
@@ -80,6 +76,9 @@ Essential to DUT:
 - [RPi4 relay HAT](https://botland.com.pl/rozszerzenia-gpio-do-raspberry-pi/6804-rpi-relay-board-3-przekazniki-nakladka-dla-raspberry-pi-waveshare-11638-5904422371753.html)
 - [F2M jumper wires](https://www.amazon.pl/dp/B07K8PVKBP/?coliid=I2LIB46FB8EO4I&colid=EVVMW1H6DML2&psc=1&ref_=lv_ov_lig_dp_it)
 - [F2F jumper wires](https://www.amazon.pl/dp/B07KYHBVR7/?coliid=I2E8ALNGLDOVFB&colid=EVVMW1H6DML2&psc=1&ref_=lv_ov_lig_dp_it)
+
+
+Additional elements for rack mount, not required:
 - [3D printed shelf](https://gitlab.eclipse.org/pastanki/HLaaS/-/blob/main/3D_shelves/README.md)
 - [3D printed tray (OLED, pushbutton version)](https://www.printables.com/model/69176-1u-raspberry-pi-rack-with-moduler-trays/files#preview)
 - [OLED](https://www.amazon.de/gp/product/B07BDFXFRK)
@@ -97,3 +96,4 @@ The license of this repository is as follows:
 * Documentation text is under `CC-BY-4.0` license
 * 3D printed designs of shelves and trays under `CC-BY-NC-SA-4.0` license
 * Scripts, tools, and so on, are under `Apache-2.0` license
+
