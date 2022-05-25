@@ -44,13 +44,18 @@ A minimal set of infrastructure services is needed for environment to function. 
 * [DHCP server](IaC/docker/isc-dhcp-server)
 * [DNS server](IaC/docker/bind9)
 * [NTP server](IaC/docker/chrony)
-* [KISS cache](IaC/docker/KissCache)
-* [Netbox IPAM](IaX/docker/netbox-docker)
 * [traefik load balancer](IaC/traefik)
-* [gitlab-runner environment]((IaC/gitlab-runner)
-Directory [IaC](IaC) is where code for setting up the services is located.
-=======
+* [gitlab-runner environment](IaC/gitlab-runner)
+* [lava worker](https://git.ostc-eu.org/OSTC/infrastructure/lava/lava-playbooks)
+* [KISS cache](IaC/docker/KissCache)
+* [lava artifacts cache](IaC/docker/artifacts-cache)
 
+
+Directory [IaC](IaC) is where code for setting up the services is located.
+
+## Howto start
+[QUICKSTART](QUICKSTART.md) file contains instructions on howto start quickly with Oniro on Raspberry Pi 4 DUT
+---
 ## Contributing
 
 See the `CONTRIBUTING.md` file.
