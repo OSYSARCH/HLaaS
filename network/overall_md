@@ -1,0 +1,133 @@
+```plantuml
+card info [
+  Overall view of Oniroproject development infrastructure
+]
+
+actor Developer
+actor Contributor
+
+
+cloud extranet as "Cloud" {
+  component gitlab [
+    Eclipse Foundation Gitlab
+  ]
+  component lava [
+    lava server
+  ]
+  gitlab-->lava
+cloud infservc as "Infrastructure services" {
+
+  node loki as "Grafana/loki server"
+}
+}
+
+Developer->gitlab
+Contributor->gitlab
+
+Developer->lava
+Contributor->lava
+
+
+
+cloud localnet as "lab network" {
+
+
+cloud DUT1 {
+  database storage [
+      USB SSD
+  ] 
+
+  node pi4_1 as "Raspberry Pi 4B" {
+    component lavaworker1 as "Lava worker" {
+    }
+  }
+
+  node nitrogen3_1 as "Nitrogen"
+  node nitrogen3_2 as "Nitrogen"
+  lavaworker1-->nitrogen3_1 : USB
+  lavaworker1-->nitrogen3_2 : USB
+  storage<->pi4_1 : USB 3
+}
+
+
+cloud DUT3 {
+  database storage3 [
+      USB SSD
+  ]
+  node pi4_3 as "Raspberry Pi 4B" {
+    component lavaworker3 as "Lava worker" {
+    }
+  }
+  node b68 as "SECO B68"
+  lavaworker3-->b68
+  node c61 as "SECO C61"
+  lavaworker3-->c61
+  storage3<->pi4_3 : USB 3
+}
+
+cloud DUT4 {
+  database storage4 [
+      USB SSD
+  ]
+  node pi4_4 as "Raspberry Pi 4B" {
+    component lavaworker4 as "Lava worker" {
+    }
+  }
+
+
+  node arduino [
+    Arduino nano 33 BLE
+  ]
+
+  storage4<->pi4_4 : USB 3
+  lavaworker4<-->arduino
+}
+
+
+cloud DUT2 {
+  database storage2 [
+      USB SSD
+  ]
+
+  node pi4_2 as "Raspberry Pi 4B" {
+    component lavaworker2 as "Lava worker"{
+    }
+  }
+  node pi4_5 as "DUT: Raspberry Pi 4B" {
+  }
+  database storage5 [
+      USB SSD
+  ] 
+  database storage5_1 [
+      MicroSD
+  ]
+  lavaworker2-->pi4_5
+  pi4_5->storage5 : "Oniro system"
+  pi4_5->storage5_1 : "primary system"
+  storage2<->pi4_2 : USB 3
+
+
+
+
+}
+
+lava-->lavaworker1
+lava-->lavaworker2
+lava-->lavaworker3
+lava-->lavaworker4
+
+cloud infserv as "Infrastructure services" {
+  node docker as "Docker compose" {
+  component traefik as "Traefik load balancer"
+  component dhcp as "DHCP server"
+  component ntp as "NTP server"
+  component dns as "DNS server"
+  component kisscache as "KissCache server"
+  component artifacts as "Lava artifacts server"
+  port http
+  }
+http->traefik
+traefik-->kisscache
+traefik-->artifacts
+}
+```
