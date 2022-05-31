@@ -54,7 +54,9 @@ A minimal set of infrastructure services is needed for environment to function. 
 Directory [IaC](IaC) is where code for setting up the services is located.
 
 ## Howto start
+
 [QUICKSTART](QUICKSTART.md) file contains instructions on howto start quickly with Oniro on Raspberry Pi 4 DUT
+
 ---
 ## Contributing
 
