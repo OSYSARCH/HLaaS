@@ -5,8 +5,8 @@ SPDX-License-Identifier: CC-BY-4.0
 -->
 # Hardware Lab as a Service blueprint
 
-## Devices Under Test - Arduino nano 33 BLE
-Arduino nano 33 BLE is controlled by Lava worker installed on Raspberry Pi 4B. There's no requirements for it to be RPi4B but standardisation o
+## Device Under Test - 96Boards Nitrogen
+Nitrogen board is controlled by Lava worker installed on Raspberry Pi 4B. There's no requirements for it to be RPi4B but standardisation o
 f setup of systems configurations, rack space, IaC, etc. for OSTC environment.
 
 Controlling host:
@@ -20,19 +20,17 @@ Controlling host:
 - Ethernet cable
 
 Essential to DUT:
-- [Arduino nano 33 BLE](https://kamami.pl/arduino-oryginalne-plytki/576014-arduino-nano-33-ble-sense-ze-zlaczami-plytka-z-mikrokontrolerem-nrf52840-modulem-ble-i-czujnikami.html?search_query=arduino&results=1896)
+- [Nitrogen](https://www.96boards.org/product/nitrogen/)
 - [YKUSH Yepkit USB 2.0 Swithcable Hub](https://www.yepkit.com/products/ykush)
 - [USB to TTL UART converter](https://www.amazon.pl/dp/B07WX2DSVB/?coliid=I9VCAX8JCO5BS&colid=EVVMW1H6DML2&psc=1&ref_=lv_ov_lig_dp_it)
-- [RPi4 relay HAT](https://botland.com.pl/rozszerzenia-gpio-do-raspberry-pi/6804-rpi-relay-board-3-przekazniki-nakladka-dla-raspberry-pi-waveshare-11638-5904422371753.html)
 - [F2M jumper wires](https://www.amazon.pl/dp/B07K8PVKBP/?coliid=I2LIB46FB8EO4I&colid=EVVMW1H6DML2&psc=1&ref_=lv_ov_lig_dp_it)
 - [F2F jumper wires](https://www.amazon.pl/dp/B07KYHBVR7/?coliid=I2E8ALNGLDOVFB&colid=EVVMW1H6DML2&psc=1&ref_=lv_ov_lig_dp_it)
 - [3D printed shelf](https://gitlab.eclipse.org/pastanki/HLaaS/-/blob/main/3D_shelves/README.md)
 - [3D printed tray (OLED, pushbutton version)](https://www.printables.com/model/69176-1u-raspberry-pi-rack-with-moduler-trays/files#preview)
-- [OLED](https://www.amazon.de/gp/product/B07BDFXFRK)
 
 
 ## Wiring
-![wiring diagram](nano_dut.svg)
+![wiring diagram](nitrogen_dut.svg)
 
 ## Contributing
 
