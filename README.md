@@ -6,14 +6,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Hardware Lab as a Service Blueprint space
 
-## Terminology
-* DUT - Device Under Test
-
 ## Overview
 
-More information can be found at: https://docs.oniroproject.org/en/latest/
-
-This is **Hardware Lab as a Service Blueprint** space for building Oniroproject laboratory. The lab consists of several areas:
+This is **Hardware Lab as a Service Blueprint** space for building Oniroproject test bench. The lab consists of several areas:
 
 * Devices Under Tests (DUTs)
 * Rack space organisation
@@ -24,7 +19,7 @@ This is **Hardware Lab as a Service Blueprint** space for building Oniroproject 
 * [Monitoring](Monitoring) of state of the lab
 
 ## Hardware inventory
-Information about used hardware can be found in [hardware directory](hardware)
+Information about tested hardware along with wiring diagrams can be found in [hardware directory](hardware)
 
 ## Rack space organisation
 ### NetBox
@@ -36,7 +31,7 @@ Alternative to NetBox is [Nautobot](https://www.networktocode.com/nautobot/) but
 Directory [3D_shelves](3D_shelves) contains rack shelves and trays 3D designs for DUTs and additional controlling hardware
 
 ### Connections diagrams
-[tbd]
+Infrastructure related diagrams are located in [network directory](network)
 
 ## Integration with external services
 ### Internal infrastructure services
