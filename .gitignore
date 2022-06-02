@@ -1,3 +1,20 @@
 *.FCStd1
 *.3mf
+.gitignore.swp
 .DS_Store
+
+# KiCAD temporary files
+/dut_diagrams/KiCAD/**/*-backups/
+/dut_diagrams/KiCAD/**/*-backups/*
+/dut_diagrams/KiCAD/**/*.kicad_prl
+/dut_diagrams/KiCAD/**/*.bac
+/dut_diagrams/KiCAD/**/*.bck
+/dut_diagrams/KiCAD/**/*.kicad_pcb-bak
+/dut_diagrams/KiCAD/**/*.kicad_sch-bak
+/dut_diagrams/KiCAD/**/*.sch-bak
+/dut_diagrams/KiCAD/**/*~
+/dut_diagrams/KiCAD/**/_autosave-*
+/dut_diagrams/KiCAD/**/*.tmp
+/dut_diagrams/KiCAD/**/*-save.pro
+/dut_diagrams/KiCAD/**/*-save.kicad_pcb
+/dut_diagrams/KiCAD/**/fp-info-cache
