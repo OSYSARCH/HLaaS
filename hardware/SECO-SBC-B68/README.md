@@ -3,11 +3,7 @@ SPDX-FileCopyrightText: Huawei Inc.
 
 SPDX-License-Identifier: CC-BY-4.0
 -->
-# Hardware Lab as a Service blueprint
-
-## Devices Under Test - Arduino nano 33 BLE
-Arduino nano 33 BLE is controlled by Lava worker installed on Raspberry Pi 4B. There's no requirements for it to be RPi4B but standardisation o
-f setup of systems configurations, rack space, IaC, etc. for OSTC environment.
+## Devices Under Test - SECO SBC B68 setup
 
 ### Controlling host:
 - Raspberry Pi 4 DUT (5V, 3A)
