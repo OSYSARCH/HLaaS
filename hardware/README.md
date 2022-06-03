@@ -50,11 +50,11 @@ The list of PDUs being used in Oniroproject
 - [Rack PDU, Switched, 1U, 16A, 208/230V](https://www.apc.com/shop/us/en/products/Rack-PDU-Switched-1U-16A-208-230V-8-C13/P-AP7921B)
 
 #### DUTs setups
-* Raspberry Pi4
-* SECO SBC B68
+* [Raspberry Pi4](RaspberryPi4)
+* [SECO SBC B68](SECO-SBC-B68)
 * SECO SBC C61
-* Arduino nano 33BLE
-* 96Boards BLE Nitrogen
+* [Arduino nano 33BLE](Arduino-nano-33-BLE)
+* [96Boards BLE Nitrogen](Nitrogen)
 
 ### USB switches for switching SSD disks between devices
 - [ATEN US3344I 4x4 USB 3.1, USB switch](https://www.amazon.pl/gp/product/B07N2ZXCHF)
