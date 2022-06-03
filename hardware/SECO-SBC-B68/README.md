@@ -5,30 +5,39 @@ SPDX-License-Identifier: CC-BY-4.0
 -->
 # Hardware Lab as a Service blueprint
 
-## Devices Under Test
+## Devices Under Test - Arduino nano 33 BLE
+Arduino nano 33 BLE is controlled by Lava worker installed on Raspberry Pi 4B. There's no requirements for it to be RPi4B but standardisation o
+f setup of systems configurations, rack space, IaC, etc. for OSTC environment.
 
-### SECO SBC B68 setup
-[Connections diagram](https://gitlab.eclipse.org/eclipse/oniro-core/HLaaS/-/tree/main/hardware/SECO-SBC-B68)
-
-- SECO SBC B68 board
-- [Power supply for Seco boards (19V, 3.16A)](https://www.amazon.de/-/en/AD24P_DE_N_2/dp/B083C11NQX)
-- [Intelinet PDU](https://www.komputronik.pl/product/592881/intellinet-listwa-zasilajaca-pdu-1u-zarzadzalna-po-ip-z-wyswietlaczem-do-szaf-rack-19-.html)
-- [ATEN US3344I 4x4 USB 3.1, USB switch](https://www.amazon.pl/gp/product/B07N2ZXCHF)
+### Controlling host:
+- Raspberry Pi 4 DUT (5V, 3A)
 - Raspberry Pi 4 controlling host (5V, 3A)
-- [Kingston A400 120GB SSD 2.5inch disk](https://www.euro.com.pl/dyski-wewnetrzne-ssd/kingston-a400-120gb.bhtml)
+- USB 3.0 to SATA 2.5 cable or enclosure
 - [Micro SD-card (32 GB)](https://www.amazon.com/Sandisk-Ultra-Micro-UHS-I-Adapter/dp/B073K14CVB)
 - tty console and RS232 interface [Converter USB - TTL](https://elty.pl/pl/p/Konwerter-USB-na-RS232RS485TTL-z-izolacja./2468?utm_source=ceneo&utm_medium=referral)
 - [cables](https://www.x-kom.pl/p/64439-kabel-zasilajacy-gembird-przedluzacz-c13-c14-18m.html)
 - [power adaptors](https://www.x-kom.pl/p/263244-kabel-zasilajacy-gembird-kabel-schuko-c14-15cm.html)
-- [C19 cable](https://www.komputronik.pl/product/444068/lanberg-zasilajacy-schuko-c19-1-8m.html?snrai_campaign=qoNfz1oNDbnp&snrai_id=bf8e4475-3b25-41aa-b94a-e049c681d30e)
 - Ethernet cable
 
-### SECO SBC B68 alternative setup 
-The difference is to use PoE Type4 splitter for power control instead of PDU + power supply. Since the setup is more costly it is theoretical and only viable in some situations
+### Essential to DUT:
+- [Seco B68](https://edge.seco.com/usa/alvin.html)
+- [ATEN US3344I 4x4 USB 3.1, USB switch](https://www.amazon.pl/gp/product/B07N2ZXCHF)
+- 2x [USB TO RS232 / RS485 / TTL Industrial Isolated Converter](https://www.waveshare.com/usb-to-rs232-485-ttl.htm)
+- 2x [Power supply for Seco boards (19V, 3.16A)](https://www.amazon.de/-/en/AD24P_DE_N_2/dp/B083C11NQX)
+- [F2M jumper wires](https://www.amazon.pl/dp/B07K8PVKBP/?coliid=I2LIB46FB8EO4I&colid=EVVMW1H6DML2&psc=1&ref_=lv_ov_lig_dp_it)
+- [F2F jumper wires](https://www.amazon.pl/dp/B07KYHBVR7/?coliid=I2E8ALNGLDOVFB&colid=EVVMW1H6DML2&psc=1&ref_=lv_ov_lig_dp_it)
+- [3D printed shelf](https://gitlab.eclipse.org/pastanki/HLaaS/-/blob/main/3D_shelves/README.md)
+- [3D printed tray (OLED, pushbutton version)](https://www.printables.com/model/69176-1u-raspberry-pi-rack-with-moduler-trays/files#preview)
+- [OLED](https://www.amazon.de/gp/product/B07BDFXFRK)
 
-- Huawei S5720-36C-PWR-EI-AC (802.3bt)
-- [PoE type 4 splitter 12/19/24V](https://www.amazon.de/-/en/Planet-Single-Port-Ultra-Splitter/dp/B07B6GJGMC)
 
+### Possible change.
+In case PoE switch is available, like Huawei S5720-36C-PWR-EI-AC (802.3bt), power supplies can be changed to:
+- [PoE+ HAT](https://www.amazon.de/gp/product/B0928ZD7QQ)
+- 2x [PoE type 4 splitter 12/19/24V](https://www.amazon.de/-/en/Planet-Single-Port-Ultra-Splitter/dp/B07B6GJGMC)
+
+## Wiring
+![wiring diagram](../dut_diagrams/SVG/alvin_dut.svg)
 
 ## Contributing
 
