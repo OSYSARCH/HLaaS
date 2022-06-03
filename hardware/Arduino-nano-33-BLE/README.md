@@ -32,7 +32,7 @@ Essential to DUT:
 
 
 ## Wiring
-![wiring diagram](nano_dut.svg)
+![wiring diagram](../dut_diagrams/SVG/nano_dut.svg)
 
 ## Contributing
 

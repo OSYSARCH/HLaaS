@@ -38,6 +38,9 @@ SPDX-License-Identifier: CC-BY-4.0
 - Push button
 - Ethernet cable
 
+### Wiring
+
+![Raspberry Pi4 DUT](../dut_diagrams/SVG/rpi4_dut.svg)
 
 ## Contributing
 

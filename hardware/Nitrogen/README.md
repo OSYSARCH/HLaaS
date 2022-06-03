@@ -30,7 +30,7 @@ Essential to DUT:
 
 
 ## Wiring
-![wiring diagram](nitrogen_dut.svg)
+![wiring diagram](../dut_diagrams/SVG/nitrogen_dut.svg)
 
 ## Contributing
 
