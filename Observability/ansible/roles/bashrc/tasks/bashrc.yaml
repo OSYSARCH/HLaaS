@@ -1,0 +1,12 @@
+---
+- name: Add dates to history for root
+  ansible.builtin.lineinfile: 
+    path: /root/.bashrc
+    regexp: '^HISTTIMEFORMAT='
+    line: "HISTTIMEFORMAT='%F %H:%M:%S '"
+
+- name: Add dates to history for current user
+  ansible.builtin.lineinfile: 
+    path: .bashrc
+    regexp: '^HISTTIMEFORMAT='
+    line: "HISTTIMEFORMAT='%F %H:%M:%S '"

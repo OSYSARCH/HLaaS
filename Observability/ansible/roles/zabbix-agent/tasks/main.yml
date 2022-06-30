@@ -1,0 +1,34 @@
+---
+- name: Create zabbix dir
+  ansible.builtin.file:
+    path: "{{ zabbix_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Copy zabbix files
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ zabbix_dir }}/{{ item }}"
+  with_items:
+    - zbx_env
+    - env_vars
+
+- name: Copy zabbix templates
+  template:
+    src: "{{ item }}"
+    dest: "{{ zabbix_dir }}/env_vars/{{ item }}"
+  with_items:
+    - .env_agent
+
+- name: Copy docker-compose files
+  template:
+    src: "{{ item }}"
+    dest: "{{ zabbix_dir }}/{{ item }}"
+  with_items:
+    - docker-compose.yml
+
+# make it idempotent
+- name: Start docker compose 
+  shell: docker-compose up -d
+  args:
+    chdir: "{{ zabbix_dir }}"

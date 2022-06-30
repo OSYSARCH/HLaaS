@@ -1,0 +1,26 @@
+---
+- name: Install landscape client
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+  with_items: "{{ landscape_packages }}"
+
+- name: Check if client already registered
+  lineinfile:
+    path: /etc/landscape/client.conf
+    regexp: 'account_name = '
+    state: absent
+  check_mode: yes
+  changed_when: false
+  register: registered
+
+- name: Register client if not registered
+  command: >
+          landscape-config
+          --silent
+          --computer-title "{{ inventory_hostname }}"
+          --account-name "{{ landscape_account_name }}"
+          --url "{{ landscape_client_url }}"
+          --ping-url "{{ landscape_client_ping_url }}"
+  become: true
+  when: not registered.found

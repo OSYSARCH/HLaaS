@@ -1,0 +1,21 @@
+---
+
+- name: Create promtail dir
+  ansible.builtin.file:
+    path: "{{ promtail_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Copy promtail templates
+  template:
+    src: "{{ item }}"
+    dest: "{{ promtail_dir }}/{{ item }}"
+  with_items:
+    - docker-compose.yml
+    - config.yml
+
+# make it idempotent
+- name: Start docker compose 
+  shell: docker-compose up -d
+  args:
+    chdir: "{{ promtail_dir }}"

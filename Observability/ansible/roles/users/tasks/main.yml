@@ -1,0 +1,36 @@
+---
+- name: Add admin users
+  user:
+    name: '{{item}}'
+    shell: /bin/bash
+    create_home: yes
+    groups: sudo
+    append: yes
+  loop: "{{ admins if admins is iterable else [] }}"
+  tags: admin_users
+
+- name: Add the users
+  user:
+    name: '{{item}}'
+    shell: /bin/bash
+    create_home: yes
+    groups: sudo
+    append: yes
+  loop: "{{ users if users is iterable else [] }}"
+  tags: users
+
+- name: "ensure admins keys are present"
+  authorized_key:
+    user: '{{ item }}'
+    key: "{{ lookup('file', item + '.ssh_key', errors='ignore') }}"
+    state: present
+  loop: "{{ admins if admins is iterable else [] }}"
+  tags: admin_ssh_keys
+
+- name: "ensure users keys are present"
+  authorized_key:
+    user: '{{ item }}'
+    key: "{{ lookup('file', item + '.ssh_key', errors='ignore') }}"
+    state: present
+  loop: "{{ users if users is iterable else [] }}"
+  tags: ssh_keys

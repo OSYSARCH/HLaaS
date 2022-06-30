@@ -1,0 +1,20 @@
+---
+
+- name: Create node-export dir
+  ansible.builtin.file:
+    path: "{{ node_exporter_dir }}"
+    state: directory
+    mode: '0755'
+
+- name: Copy node-exporter templates
+  template:
+    src: "{{ item }}"
+    dest: "{{ node_exporter_dir }}/{{ item }}"
+  with_items:
+    - docker-compose.yml
+
+# make it idempotent
+- name: Start docker compose 
+  shell: docker-compose up -d
+  args:
+    chdir: "{{ node_exporter_dir }}"

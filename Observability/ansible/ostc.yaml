@@ -1,0 +1,42 @@
+---
+- hosts: all
+  become: yes
+ 
+  roles:
+    - common
+    - users
+    - bashrc
+    - node-exporter
+    - promtail
+    - borgbackup
+    - system_state
+    - zabbix-agent
+
+  tags:
+    - common
+    - monitoring
+
+- hosts: lab
+  become: yes
+
+  roles:
+    - lxd
+  
+  tags:
+    - lxd
+
+- hosts: ostc-eu
+  become: yes
+
+  roles:
+    - tailscale
+
+  tags:
+    - tailscale
+    - vpn
+
+- hosts: ubuntu
+  become: yes
+
+  roles:
+    - landscape

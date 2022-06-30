@@ -1,0 +1,6 @@
+---
+landscape_packages:
+  - landscape-client
+
+landscape_client_url: https://landscape.canonical.com/message-system
+landscape_client_ping_url: http://landscape.canonical.com/ping

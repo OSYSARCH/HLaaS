@@ -16,7 +16,7 @@ This is **Hardware Lab as a Service Blueprint** space for building Oniroproject 
 * Wiring and connections diagrams
 * Accompanying infrastructure services inside lab
 * Integration with gitlab and CI/CD pipelines
-* [Monitoring](Monitoring) of state of the lab
+* [Monitoring](Observability) of state of the lab
 
 ## Hardware inventory
 Information about tested hardware along with wiring diagrams can be found in [hardware directory](hardware)

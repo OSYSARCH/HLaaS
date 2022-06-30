@@ -1,0 +1,25 @@
+---
+
+- name: Install basic packages
+  ansible.builtin.package:
+    name:
+      - ntp
+      - screen
+      - tree
+    state: latest
+
+- name: Install docker-compose with curl
+  ansible.builtin.get_url:
+    url: "{{ docker_compose_url }}"
+    dest: /usr/local/bin/docker-compose
+    mode: "0755"
+  when:
+    - ansible_facts['lsb']['release'] == "20.04"
+    - ansible_facts['architecture'] == "x86_64"
+
+- name: Install docker-compose with pip
+  ansible.builtin.pip:
+    name: docker-compose
+  when:
+    - ansible_facts['lsb']['release'] == "20.04"
+    - ansible_facts['architecture'] == "aarch64"

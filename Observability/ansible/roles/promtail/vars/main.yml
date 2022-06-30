@@ -1,0 +1,4 @@
+---
+
+loki_server: "loki.localnet:3100"
+promtail_dir: /opt/docker/promtail

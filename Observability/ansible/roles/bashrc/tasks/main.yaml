@@ -1,0 +1,4 @@
+---
+- include: bashrc.yaml
+  tags:
+    - bashrc

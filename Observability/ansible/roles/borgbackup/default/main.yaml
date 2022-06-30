@@ -1,0 +1,3 @@
+---
+# directories to backup
+backup_dirs: "'/var/lib/docker/volumes/*[-_]* {{ backup_dirs }} /opt/docker /root'"

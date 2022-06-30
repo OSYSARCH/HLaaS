@@ -1,0 +1,61 @@
+---
+- name: Install needed packages
+  ansible.builtin.package:
+    name:
+      - s3cmd
+      - borgbackup
+    state: latest
+
+- name: Initialize s3cmd
+  template:
+    src: .s3cfg
+    dest: /root/.s3cfg
+    mode: '600'
+
+- name: Copy borgbackup files
+  ansible.builtin.copy:
+    src: scripts
+    dest: /root/
+
+- name: Files permissions
+  template: 
+    src: bb.sh
+    dest: /root/scripts/bb.sh
+    mode: '0700'
+
+- name: Check config
+  stat:
+    path: /root/scripts/.borg_pass
+  register: passok
+
+- name: Generate backup password
+  ansible.builtin.set_fact:
+    borg_password: "{{ lookup('ansible.builtin.password', '/dev/null', seed=inventory_hostname) }}"
+  when: not passok.stat.exists	
+
+- name: Create borgbackup passwd
+  template:
+    src: .borg_pass
+    dest: /root/scripts/.borg_pass
+  when: not passok.stat.exists	
+
+- name: Set environment
+  template:
+    src: .borg_env
+    dest: /root/scripts/.borg_env
+
+- name: Check if borg repository exists
+  stat:
+    path: /root/borg
+  register: borgok
+
+- name: Initialize borg repository
+  shell: "BORG_PASSPHRASE='{{ borg_password }}' borg init --encryption=repokey /root/borg"
+  when: not borgok.stat.exists
+
+- name: Add crontab for borgbackup
+  ansible.builtin.cron:
+    name: "borgbackup"
+    minute: "10"
+    job: "export BORG_REPO=/root/borg; export BORG_PASSPHRASE='{{ borg_password }}' ; cd /root/scripts && /root/scripts/bb.sh"
+  when: not passok.stat.exists	
