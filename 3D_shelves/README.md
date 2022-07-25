@@ -19,9 +19,10 @@ List of Trays:
 - SECO [B68](SBCB68_tray.png)
 - [Arduino NANO 33 BLE ](Arduino_Nano_33_BLE_tray.png)
 - [Nitrogen](3D_shelves/Nitrogen_tray.png)
-- Raspberry PI [available at PRUSA](https://www.prusaprinters.org/prints/69176-1u-raspberry-pi-rack-with-moduler-trays/files)
+- Raspberry PI4 + TTL-USB + Terminal block [RPI tray](trpi4-1-rpi4-tray-all.png) (modified version of [Raspberry PI4](https://www.prusaprinters.org/prints/69176-1u-raspberry-pi-rack-with-moduler-trays/files))
 - [3x Relay board ](3D_shelves/relay_tray-Relay_tray.png)
 - [YKUSH USB kvm](3D_shelves/ykush_tray.png)
+- [YKUSH3 USB kvm](3D_shelves/ykush3_tray.png)
 
 
 ## Contributing
