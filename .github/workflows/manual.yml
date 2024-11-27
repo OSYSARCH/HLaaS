@@ -1,0 +1,42 @@
+name: Run on macOS
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build and Test on macOS
+    runs-on: macos-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up the required environment (if any tools or dependencies are needed)
+      - name: Set up environment
+        run: |
+          echo "Setting up environment..."
+          # Example: Install specific tools using brew
+          brew install <tool-name>
+
+      # Run your build commands
+      - name: Run Build
+        run: |
+          echo "Building the project..."
+          # Replace with your build commands
+          make build
+
+      # Run your tests
+      - name: Run Tests
+        run: |
+          echo "Running tests..."
+          # Replace with your test commands
+          make test
+
+      # Add additional steps as needed
