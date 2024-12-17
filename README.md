@@ -66,5 +66,3 @@ The license of this repository is as follows:
 * Scripts, tools, and so on, are under `Apache-2.0` license
 
 See the `LICENSES` subdirectory for full license texts.
-
-
