@@ -40,8 +40,6 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ### Wiring
 
-![Raspberry Pi4 DUT](../dut_diagrams/SVG/rpi4_dut.svg)
-
 ## Contributing
 
 See the `CONTRIBUTING.md` file.
