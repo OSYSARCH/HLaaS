@@ -8,7 +8,10 @@ on:
 jobs:
   sonarqube:
     name: SonarQube
-    runs-on: ubuntu-latest
+    # https://github.com/apps/riscv-builders
+    runs-on: 
+      - riscv-builders
+      - soc-spacemit-k1
     steps:
       - uses: actions/checkout@v4
         with:
